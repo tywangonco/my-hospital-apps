@@ -1,0 +1,19 @@
+name: Keep Streamlit Apps Awake
+
+on:
+  schedule:
+    # 使用 cron 語法，每 15 分鐘自動執行一次
+    - cron: '*/15 * * * *' 
+  workflow_dispatch: # 依然保留手動觸發功能
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping All Streamlit Apps
+        run: |
+          curl -s https://mailiao-shuttle-cztfdrmfoczkxffarkwaqe.streamlit.app/ > /dev/null
+          curl -s https://emetogenicpotential-mlued5czwub9zzc74geiep.streamlit.app/ > /dev/null
+          curl -s https://icidatabase-46j5hr3r7lkbcpun25so6v.streamlit.app/ > /dev/null
+          curl -s https://nhi-cancer-drug-app-dnojihfaj7gvfgx2zkta93.streamlit.app/ > /dev/null
+          curl -s https://calculatepotentrisk-g9u6pz2nwxcglbt45zfcqd.streamlit.app/ > /dev/null
